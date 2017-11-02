@@ -1,18 +1,22 @@
-package boardgame.core.tic_tac_toe.ai;
+package boardgame.tic_tac_toe.core.ai;
 
 import boardgame.core.AI;
 import boardgame.core.Board;
 import boardgame.core.Point;
-import boardgame.core.tic_tac_toe.TicTacToeBoard;
+import boardgame.tic_tac_toe.core.Move;
+import boardgame.tic_tac_toe.core.TicTacToeBoard;
+import org.jetbrains.annotations.Contract;
 
-public abstract class BaseAI implements AI<Point, Boolean> {
+public abstract class BaseAI implements AI<Point, Move> {
 	@Override
-	public Point getNextMove(Board<Boolean> board) {
+	@Contract("null -> fail")
+	public Point getNextMove(Board<Move> board) {
 		validateBoard(board);
 		return getNextMoveImpl((TicTacToeBoard)board);
 	}
 
-	private void validateBoard(Board<Boolean> board) {
+	@Contract("null -> fail")
+	private void validateBoard(Board<Move> board) {
 		if (!(board instanceof TicTacToeBoard)) {
 			throw new IllegalArgumentException("board must be an instance of TicTacToeBoard");
 		}
@@ -24,5 +28,6 @@ public abstract class BaseAI implements AI<Point, Boolean> {
 		}
 	}
 
+	@Contract("null -> fail")
 	protected abstract Point getNextMoveImpl(TicTacToeBoard board);
 }
