@@ -1,10 +1,12 @@
-package boardgame.core.tic_tac_toe.ai;
+package boardgame.tic_tac_toe.core.ai;
 
 import boardgame.core.Point;
-import boardgame.core.tic_tac_toe.TicTacToeBoard;
+import boardgame.tic_tac_toe.core.TicTacToeBoard;
+import org.jetbrains.annotations.Contract;
 
 public class SequentialAI extends BaseAI{
 	@Override
+	@Contract("null -> fail")
 	protected Point getNextMoveImpl(TicTacToeBoard board) {
 		Point p = null;
 

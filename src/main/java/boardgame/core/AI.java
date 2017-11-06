@@ -1,5 +1,7 @@
 package boardgame.core;
 
+import boardgame.core.board.Board;
+
 /**
  * Represents an AI.
  * @param <T> some object encapsulating the move to be made.

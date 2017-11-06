@@ -1,4 +1,6 @@
-package boardgame.core;
+package boardgame.core.board;
+
+import boardgame.core.Point;
 
 public interface Board<T> {
     boolean isValidPos(Point p);

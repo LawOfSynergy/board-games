@@ -1,13 +1,15 @@
-package boardgame.core.tic_tac_toe;
+package boardgame.tic_tac_toe.core;
 
 import boardgame.core.Point;
-import boardgame.core.tic_tac_toe.ai.BaseAI;
+import boardgame.tic_tac_toe.core.ai.BaseAI;
+import org.jetbrains.annotations.Contract;
 
-public class Session implements Runnable{
+public class TextSession implements Runnable{
 	private BaseAI[] players;
 	private TicTacToeBoard board;
 
-	public Session(BaseAI p1, BaseAI p2) {
+	@Contract("null, _ -> fail; _ , null -> fail")
+	public TextSession(BaseAI p1, BaseAI p2) {
 		if(p1 == null) throw new IllegalArgumentException("p1 cannot be null");
 		if(p2 == null) throw new IllegalArgumentException("p2 cannot be null");
 
@@ -19,7 +21,7 @@ public class Session implements Runnable{
 		int currentPlayer = 0;
 		while(!isOver(board)) {
 			System.out.println(board);
-			board.set(players[currentPlayer].getNextMove(board), currentPlayer == 0);
+			board.set(players[currentPlayer].getNextMove(board), new Move(currentPlayer == 0));
 			currentPlayer = (currentPlayer+1)%2;
 		}
 		System.out.println(board);
@@ -79,13 +81,14 @@ public class Session implements Runnable{
 		return false;
 	}
 
+	@Contract("null -> fail")
 	private boolean checkSequence(Point[] points) {
 		if (points == null) { throw new IllegalArgumentException("points cannot be null"); }
 		if (points.length != 3) { throw new IllegalArgumentException("points.length must have 3 entries"); }
 
 		int[] counts = {0, 0};
 		for(Point p : points) {
-			Boolean cell = board.get(p);
+			Boolean cell = board.get(p).getValue();
 			if(cell == null) {
 				//noop
 			}else if(cell) {

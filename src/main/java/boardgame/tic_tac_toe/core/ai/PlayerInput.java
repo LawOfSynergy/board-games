@@ -1,14 +1,15 @@
-package boardgame.core.tic_tac_toe.ai;
+package boardgame.tic_tac_toe.core.ai;
 
-import boardgame.core.Board;
 import boardgame.core.Point;
-import boardgame.core.tic_tac_toe.TicTacToeBoard;
+import boardgame.tic_tac_toe.core.TicTacToeBoard;
+import org.jetbrains.annotations.Contract;
 
 import java.util.Scanner;
 
 public class PlayerInput extends BaseAI{
 
 	@Override
+	@Contract("null -> fail")
 	protected Point getNextMoveImpl(TicTacToeBoard board) {
 		Scanner in = new Scanner(System.in);
 		Point result = null;

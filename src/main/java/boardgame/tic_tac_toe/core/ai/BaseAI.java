@@ -1,7 +1,7 @@
 package boardgame.tic_tac_toe.core.ai;
 
 import boardgame.core.AI;
-import boardgame.core.Board;
+import boardgame.core.board.Board;
 import boardgame.core.Point;
 import boardgame.tic_tac_toe.core.Move;
 import boardgame.tic_tac_toe.core.TicTacToeBoard;

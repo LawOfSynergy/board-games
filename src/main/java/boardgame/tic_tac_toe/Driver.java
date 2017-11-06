@@ -1,9 +1,10 @@
-package boardgame.core.tic_tac_toe;
+package boardgame.tic_tac_toe;
 
-import boardgame.core.tic_tac_toe.ai.BaseAI;
-import boardgame.core.tic_tac_toe.ai.PlayerInput;
-import boardgame.core.tic_tac_toe.ai.RandomAI;
-import boardgame.core.tic_tac_toe.ai.SequentialAI;
+import boardgame.tic_tac_toe.core.ai.BaseAI;
+import boardgame.tic_tac_toe.core.ai.PlayerInput;
+import boardgame.tic_tac_toe.core.ai.RandomAI;
+import boardgame.tic_tac_toe.core.ai.SequentialAI;
+import boardgame.tic_tac_toe.core.TextSession;
 
 import java.io.*;
 
@@ -15,7 +16,7 @@ public class Driver {
 	public static final String SEPERATOR = "====================================================================================\n";
 
 	public static void main(String[] args) {
-		Session session;
+		TextSession session;
 
 		PrintStream originalOut = System.out;
 
@@ -27,7 +28,7 @@ public class Driver {
 
 		printHeader("Random vs Random");
 		for (int i = 0; i < 10; i++) {
-			session = new Session(RANDOM, RANDOM);
+			session = new TextSession(RANDOM, RANDOM);
 			session.run();
 			System.out.println(SEPERATOR);
 		}
@@ -35,7 +36,7 @@ public class Driver {
 		printSpace();
 		printHeader("Random vs Sequential");
 		for (int i = 0; i < 10; i++) {
-			session = new Session(RANDOM, SEQUENTIAL);
+			session = new TextSession(RANDOM, SEQUENTIAL);
 			session.run();
 			System.out.println(SEPERATOR);
 		}
@@ -43,7 +44,7 @@ public class Driver {
 		printSpace();
 		printHeader("Sequential vs Random");
 		for (int i = 0; i < 10; i++) {
-			session = new Session(SEQUENTIAL, RANDOM);
+			session = new TextSession(SEQUENTIAL, RANDOM);
 			session.run();
 			System.out.println(SEPERATOR);
 		}
@@ -51,7 +52,7 @@ public class Driver {
 		printSpace();
 		printHeader("Sequential vs Sequential");
 		for (int i = 0; i < 10; i++) {
-			session = new Session(SEQUENTIAL, SEQUENTIAL);
+			session = new TextSession(SEQUENTIAL, SEQUENTIAL);
 			session.run();
 			System.out.println(SEPERATOR);
 		}
@@ -60,27 +61,27 @@ public class Driver {
 
 		printSpace();
 		printHeader("Player vs Random");
-		session = new Session(PLAYER, RANDOM);
+		session = new TextSession(PLAYER, RANDOM);
 		session.run();
 
 		printSpace();
 		printHeader("Random vs Player");
-		session = new Session(RANDOM, PLAYER);
+		session = new TextSession(RANDOM, PLAYER);
 		session.run();
 
 		printSpace();
 		printHeader("Player vs Sequential");
-		session = new Session(PLAYER, SEQUENTIAL);
+		session = new TextSession(PLAYER, SEQUENTIAL);
 		session.run();
 
 		printSpace();
 		printHeader("Sequential vs Player");
-		session = new Session(SEQUENTIAL, PLAYER);
+		session = new TextSession(SEQUENTIAL, PLAYER);
 		session.run();
 
 		printSpace();
 		printHeader("Player vs Player");
-		session = new Session(PLAYER, PLAYER);
+		session = new TextSession(PLAYER, PLAYER);
 		session.run();
 	}
 

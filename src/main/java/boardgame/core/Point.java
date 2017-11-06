@@ -1,5 +1,7 @@
 package boardgame.core;
 
+import org.jetbrains.annotations.Contract;
+
 public class Point {
     private int x, y;
 
@@ -8,14 +10,17 @@ public class Point {
         this.y = y;
     }
 
+    @Contract(pure = true)
     public int getX() {
         return x;
     }
 
+    @Contract(pure = true)
     public int getY() {
         return y;
     }
 
+    @Contract(pure = true)
     public String toString() {
         return "Point(" + x + "," + y + ")";
     }
